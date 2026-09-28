@@ -1,0 +1,12 @@
+CADASTRO DE USUÁRIO
+
+Nome:
+E-mail:
+Senha:
+Endereço:
+CPF:
+Imagem:
+
+--------------------------------
+Data do cadastro:
+--------------------------------

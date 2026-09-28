@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sistema de Cadastro</title>
+
+    <style>
+
+        /* RESET */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* PÁGINA */
+        body {
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0066ff, #00c6ff, #7b2cff);
+            color: #222;
+        }
+
+        /* MENU */
+        header {
+            width: 100%;
+            padding: 20px 8%;
+            background-color: rgba(255, 255, 255, 0.95);
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #0066ff;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            margin-left: 25px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #0066ff;
+        }
+
+        /* CONTEÚDO PRINCIPAL */
+        main {
+            width: 100%;
+            min-height: calc(100vh - 80px);
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 50px 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1000px;
+
+            background-color: white;
+
+            border-radius: 25px;
+
+            padding: 50px;
+
+            text-align: center;
+
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+
+            animation: aparecer 0.8s ease;
+        }
+
+        /* ÍCONE */
+        .icone {
+            width: 100px;
+            height: 100px;
+
+            margin: 0 auto 25px;
+
+            border-radius: 50%;
+
+            background: linear-gradient(135deg, #0066ff, #00c6ff);
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-size: 50px;
+
+            box-shadow: 0 10px 25px rgba(0, 102, 255, 0.35);
+        }
+
+        /* TÍTULO */
+        h1 {
+            font-size: 42px;
+            color: #222;
+            margin-bottom: 15px;
+        }
+
+        .destaque {
+            color: #0066ff;
+        }
+
+        .descricao {
+            max-width: 700px;
+
+            margin: 0 auto 40px;
+
+            color: #666;
+
+            font-size: 18px;
+
+            line-height: 1.7;
+        }
+
+        /* CARDS */
+        .cards {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+
+            flex-wrap: wrap;
+
+            margin-bottom: 40px;
+        }
+
+        .card {
+            width: 250px;
+
+            padding: 30px 20px;
+
+            background-color: #f7faff;
+
+            border-radius: 15px;
+
+            border: 1px solid #e1e8f5;
+
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+
+            border-color: #0066ff;
+        }
+
+        .card-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .card h2 {
+            color: #0066ff;
+
+            font-size: 21px;
+
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #666;
+
+            font-size: 15px;
+
+            line-height: 1.5;
+        }
+
+        /* BOTÃO */
+        .botao {
+            display: inline-block;
+
+            padding: 17px 40px;
+
+            border-radius: 10px;
+
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+
+            color: white;
+
+            text-decoration: none;
+
+            font-size: 18px;
+
+            font-weight: bold;
+
+            box-shadow: 0 8px 20px rgba(0, 102, 255, 0.3);
+
+            transition: 0.3s;
+        }
+
+        .botao:hover {
+            transform: translateY(-3px) scale(1.03);
+
+            box-shadow: 0 12px 25px rgba(0, 102, 255, 0.4);
+        }
+
+        /* INFORMAÇÃO */
+        .info {
+            margin-top: 35px;
+
+            padding: 20px;
+
+            background-color: #eef6ff;
+
+            border-radius: 12px;
+
+            color: #555;
+
+            line-height: 1.6;
+        }
+
+        .info strong {
+            color: #0066ff;
+        }
+
+        /* RODAPÉ */
+        footer {
+            margin-top: 35px;
+
+            padding-top: 25px;
+
+            border-top: 1px solid #ddd;
+
+            color: #888;
+
+            font-size: 14px;
+        }
+
+        /* ANIMAÇÃO */
+        @keyframes aparecer {
+
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+        /* CELULAR */
+        @media (max-width: 700px) {
+
+            header {
+                flex-direction: column;
+
+                gap: 15px;
+
+                padding: 20px;
+            }
+
+            nav a {
+                margin: 0 8px;
+
+                font-size: 14px;
+            }
+
+            .container {
+                padding: 35px 20px;
+            }
+
+            h1 {
+                font-size: 30px;
+            }
+
+            .descricao {
+                font-size: 16px;
+            }
+
+            .card {
+                width: 100%;
+            }
+
+            .botao {
+                width: 100%;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- MENU -->
+    <header>
+
+        <div class="logo">
+            👤 Meu Cadastro
+        </div>
+
+        <nav>
+            <a href="pagina-inicial.html">Início</a>
+            <a href="cadastro.html">Cadastro</a>
+        </nav>
+
+    </header>
+
+
+    <!-- CONTEÚDO -->
+    <main>
+
+        <div class="container">
+
+            <div class="icone">
+                👤
+            </div>
+
+            <h1>
+                Bem-vindo ao
+                <span class="destaque">
+                    Sistema de Cadastro
+                </span>
+            </h1>
+
+            <p class="descricao">
+                Aqui você poderá realizar seu cadastro de maneira
+                simples, rápida e organizada. Preencha suas informações
+                pessoais e crie seu perfil.
+            </p>
+
+
+            <!-- CARDS -->
+            <div class="cards">
+
+                <div class="card">
+
+                    <div class="card-icon">
+                        📝
+                    </div>
+
+                    <h2>
+                        Cadastro Fácil
+                    </h2>
+
+                    <p>
+                        Preencha seus dados pessoais através
+                        de um formulário simples e fácil de utilizar.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="card-icon">
+                        🔒
+                    </div>
+
+                    <h2>
+                        Seus Dados
+                    </h2>
+
+                    <p>
+                        Organize suas informações de cadastro
+                        de maneira prática e eficiente.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="card-icon">
+                        📷
+                    </div>
+
+                    <h2>
+                        Sua Imagem
+                    </h2>
+
+                    <p>
+                        Adicione uma imagem para personalizar
+                        seu cadastro e seu perfil.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- BOTÃO -->
+            <a href="cadastro.html" class="botao">
+                🚀 Fazer meu cadastro
+            </a>
+
+
+            <!-- INFORMAÇÃO -->
+            <div class="info">
+
+                <p>
+                    <strong>Como funciona?</strong>
+                </p>
+
+                <p>
+                    Clique no botão acima para acessar a página
+                    de cadastro. Depois, preencha seus dados
+                    e finalize seu cadastro.
+                </p>
+
+            </div>
+
+
+            <!-- RODAPÉ -->
+            <footer>
+
+                <p>
+                    © 2026 - Sistema de Cadastro
+                </p>
+
+                <p>
+                    Desenvolvido para fins educacionais.
+                </p>
+
+            </footer>
+
+        </div>
+
+    </main>
+
+</body>
+
+</html>
+
